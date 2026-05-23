@@ -1,0 +1,13 @@
+{
+  "name": "videojuego_educativo",
+  "version": "1.0.0",
+  "description": "Juego web educativo de ciberseguridad para ninos y adolescentes.",
+  "main": "app.js",
+  "scripts": {
+    "check": "node --check app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

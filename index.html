@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberQuest: Laberinto Seguro</title>
+    <meta
+      name="description"
+      content="Juego web educativo de ciberseguridad con estilo pixel-art y laberintos compactos."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Silkscreen:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./app.js"></script>
+  </head>
+
+  <body>
+    <div class="scene-bg" aria-hidden="true"></div>
+
+    <main id="app" class="app-shell">
+      <section id="homeScreen" class="screen screen-home active">
+        <article class="hero-card pixel-panel">
+          <div class="hero-layout">
+            <div class="hero-copy-wrap">
+              <p class="eyebrow">Aventura educativa</p>
+              <h1>ORBIT-7</h1>
+              <p class="hero-copy">
+                Un robot pequeño cruzó una ciudad digital y ahora necesita aprender a protegerse para volver a casa.
+              </p>
+              <button id="playBtn" class="btn btn-primary">Start</button>
+            </div>
+
+            <div class="hero-visual" aria-hidden="true">
+              <img class="hero-robot-full" src="./robot.jpg" alt="Robot ORBIT-7" />
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section id="gameScreen" class="screen screen-game" aria-hidden="true">
+        <header class="hud pixel-panel" aria-label="Estado del juego">
+          <div class="hud-item">
+            <span class="hud-label">Nivel</span>
+            <strong id="levelLabel">1</strong>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">Vidas</span>
+            <strong id="livesLabel">❤❤❤</strong>
+          </div>
+          <div class="hud-item hud-wide">
+            <span class="hud-label">Progreso</span>
+            <strong id="progressText">0/9 preguntas</strong>
+            <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">Puntaje</span>
+            <strong id="scoreLabel">0</strong>
+          </div>
+        </header>
+
+        <section class="board-shell">
+          <div id="mazeBoard" class="maze-board" aria-label="Laberinto interactivo"></div>
+          <nav class="touch-controls" aria-label="Controles tactiles">
+            <button class="touch-btn up" data-dir="up" aria-label="Arriba">▲</button>
+            <div class="touch-row">
+              <button class="touch-btn" data-dir="left" aria-label="Izquierda">◀</button>
+              <button class="touch-btn" data-dir="down" aria-label="Abajo">▼</button>
+              <button class="touch-btn" data-dir="right" aria-label="Derecha">▶</button>
+            </div>
+          </nav>
+        </section>
+      </section>
+    </main>
+
+    <div id="storyModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="storyTitle">
+      <div class="modal-card pixel-panel story-card">
+        <p class="modal-kicker">Historia</p>
+        <h2 id="storyTitle">El viaje de ORBIT-7</h2>
+        <p id="storyText" class="story-text"></p>
+        <div class="story-dots" aria-hidden="true">
+          <span class="story-dot active"></span>
+          <span class="story-dot"></span>
+          <span class="story-dot"></span>
+          <span class="story-dot"></span>
+        </div>
+        <button id="storyContinueBtn" class="btn btn-primary">Siguiente</button>
+      </div>
+    </div>
+
+    <div id="questionModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="questionTitle">
+      <div class="modal-card pixel-panel">
+        <p class="modal-kicker">Alerta digital</p>
+        <h2 id="questionTitle">Pregunta</h2>
+        <p id="questionText" class="question-text"></p>
+        <div id="answerOptions" class="answer-options"></div>
+        <p id="questionFeedback" class="feedback-text" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <div id="finalModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="finalTitle">
+      <div class="modal-card pixel-panel">
+        <p class="modal-kicker">Resultado</p>
+        <h2 id="finalTitle">Misión completada</h2>
+        <div class="final-stats">
+          <div class="stat-box">
+            <span>Puntaje</span>
+            <strong id="finalScore">0</strong>
+          </div>
+          <div class="stat-box">
+            <span>Preguntas</span>
+            <strong id="finalProgress">0/9</strong>
+          </div>
+        </div>
+        <div class="panel-actions">
+          <button id="replayBtn" class="btn btn-primary">Reiniciar</button>
+          <button id="homeBtn" class="btn btn-secondary">Inicio</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+  </body>
+</html>
